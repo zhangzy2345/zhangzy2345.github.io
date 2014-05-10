@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | zhangzy's Blog]]></title>
   <link href="http://zhangzy2345.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://zhangzy2345.github.io/"/>
-  <updated>2014-05-10T19:53:37+08:00</updated>
+  <updated>2014-05-10T19:55:45+08:00</updated>
   <id>http://zhangzy2345.github.io/</id>
   <author>
     <name><![CDATA[zhangzy]]></name>
@@ -62,12 +62,15 @@
 
 <p>对于 <code>Devkit</code> 的安装，没有什么特别值得注意的地方<em>(我没遇到)</em>，在解压的时候不要选择中文路径就行。</p>
 
-<p>运行程序 <code>Start Command Prompt with Ruby</code> ，切换到解压后的 <code>Devkit</code> 目录下，执行以下命令：</p>
+<p>运行程序 <code>Start Command Prompt with Ruby</code> ，切换到解压后的 <code>Devkit</code> 目录下，执行以下命令：
+```</p>
 
 <pre><code>ruby dk.rb init
 ruby dk.rb install
 gem install rdiscount --platform=ruby
 </code></pre>
+
+<p>```</p>
 
 <blockquote><p>Note：上述安装基本不会出错，如果出现什么问题，请大家自己去 goole 或 baidu 查相应资料</p></blockquote>
 
