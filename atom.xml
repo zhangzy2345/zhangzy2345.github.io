@@ -4,7 +4,7 @@
   <title><![CDATA[zhangzy's Blog]]></title>
   <link href="http://zhangzy2345.github.io/atom.xml" rel="self"/>
   <link href="http://zhangzy2345.github.io/"/>
-  <updated>2014-05-10T13:24:06+08:00</updated>
+  <updated>2014-05-10T13:49:28+08:00</updated>
   <id>http://zhangzy2345.github.io/</id>
   <author>
     <name><![CDATA[zhangzy]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[The First Blog]]></title>
+    <title type="html"><![CDATA[the first blog]]></title>
     <link href="http://zhangzy2345.github.io/blog/2014/05/10/the-first-blog/"/>
     <updated>2014-05-10T02:16:09+08:00</updated>
     <id>http://zhangzy2345.github.io/blog/2014/05/10/the-first-blog</id>
@@ -23,7 +23,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Title]]></title>
+    <title type="html"><![CDATA[title]]></title>
     <link href="http://zhangzy2345.github.io/blog/2014/05/10/title/"/>
     <updated>2014-05-10T01:08:28+08:00</updated>
     <id>http://zhangzy2345.github.io/blog/2014/05/10/title</id>

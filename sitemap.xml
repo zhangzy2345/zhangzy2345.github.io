@@ -2,19 +2,23 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://zhangzy2345.github.io/blog/2014/05/10/title/</loc>
-        <lastmod>2014-05-10T01:08:28+08:00</lastmod>
+        <lastmod>2014-05-10T13:49:09+08:00</lastmod>
     </url>
     <url>
         <loc>http://zhangzy2345.github.io/blog/2014/05/10/the-first-blog/</loc>
-        <lastmod>2014-05-10T02:16:09+08:00</lastmod>
+        <lastmod>2014-05-10T13:49:09+08:00</lastmod>
     </url>
     <url>
         <loc>http://zhangzy2345.github.io/blog/archives/</loc>
-        <lastmod>2014-05-10T02:16:09+08:00</lastmod>
+        <lastmod>2014-05-10T13:49:09+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://zhangzy2345.github.io/blog/categories/</loc>
+        <lastmod>2014-05-10T13:49:09+08:00</lastmod>
     </url>
     <url>
         <loc>http://zhangzy2345.github.io/</loc>
-        <lastmod>2014-05-10T02:16:09+08:00</lastmod>
+        <lastmod>2014-05-10T13:49:09+08:00</lastmod>
     </url>
     <url>
         <loc>http://zhangzy2345.github.io/robots.txt</loc>
