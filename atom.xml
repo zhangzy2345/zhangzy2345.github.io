@@ -4,7 +4,7 @@
   <title><![CDATA[zhangzy's Blog]]></title>
   <link href="http://zhangzy2345.github.io/atom.xml" rel="self"/>
   <link href="http://zhangzy2345.github.io/"/>
-  <updated>2014-05-10T18:09:34+08:00</updated>
+  <updated>2014-05-10T18:14:46+08:00</updated>
   <id>http://zhangzy2345.github.io/</id>
   <author>
     <name><![CDATA[zhangzy]]></name>
@@ -14,19 +14,10 @@
 
   
   <entry>
-    <title type="html"><![CDATA[the first blog]]></title>
-    <link href="http://zhangzy2345.github.io/blog/the-first-blog/"/>
-    <updated>2014-05-10T02:16:09+08:00</updated>
-    <id>http://zhangzy2345.github.io/blog/the-first-blog</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[如何在windows上搭建github博客]]></title>
-    <link href="http://zhangzy2345.github.io/blog/title/"/>
+    <link href="http://zhangzy2345.github.io/blog/window-github-blog"/>
     <updated>2014-05-10T01:08:28+08:00</updated>
-    <id>http://zhangzy2345.github.io/blog/title</id>
+    <id>http://zhangzy2345.github.io/blog/window-github-blog</id>
     <content type="html"><![CDATA[<p>以下是我结合一些资料与个人遇到的一些问题后的总结，让大家在搭建的过程中尽可能的少被坑。</p>
 
 <h3>一、创建github账号</h3>
