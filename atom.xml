@@ -4,7 +4,7 @@
   <title><![CDATA[zhangzy's Blog]]></title>
   <link href="http://zhangzy2345.github.io/atom.xml" rel="self"/>
   <link href="http://zhangzy2345.github.io/"/>
-  <updated>2014-05-10T23:58:42+08:00</updated>
+  <updated>2014-05-11T00:43:22+08:00</updated>
   <id>http://zhangzy2345.github.io/</id>
   <author>
     <name><![CDATA[zhangzy]]></name>
@@ -12,6 +12,113 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[在octopress中设置语法高亮]]></title>
+    <link href="http://zhangzy2345.github.io/blog/pygments-highlight-in-octopress"/>
+    <updated>2014-05-11T00:02:51+08:00</updated>
+    <id>http://zhangzy2345.github.io/blog/pygments-highlight-in-octopress</id>
+    <content type="html"><![CDATA[<p>看下文章的发布时间，就知道本屌又折腾了好几个小时才把这高亮弄出来，为了让大家少走弯路，都没去陪女朋友睡觉，明天一顿搓衣板是少不了了，大家觉得本文要是有用，就点击下方的赞助，我这顿搓衣板也算没白跪。</p>
+
+<p>闲话不多说，大家在写博文的时候，作为程序员肯定少不了贴代码，而装完octopress后，默认没有语法高亮的功能，让文章看上去着实不爽啊，下面就给大家介绍如何让代码高亮。</p>
+
+<p>以下是Octopress官方的原文：</p>
+
+<blockquote><p>Sharing code is important, and blogging about it should be easy and beautiful. That&rsquo;s why Octopress is packed with features to make blogging your code a breeze. Though Jekyll comes with support for Pygments syntax highlighting, Octopress makes it way better. Here&rsquo;s how.</p>
+
+<p>A Sass port of Solarized syntax highlighting created specifically for Octopress.
+Gist code embedding &ndash; by Brandon Tilly.
+Insert code snippets from your filesystem with a download link.
+Easy inline code blocks with &lt;figureand &lt;figcaptionand optional download links.
+Pygments caching &ndash; a Jekyll community plugin.</p></blockquote>
+
+<p>*
+译文：</p>
+
+<p>在博客上共享代码片段应该是简单的，并且代码应该具有简单的高亮功能。Octopress也具有这种功能，在jekyll上，其使用的是pygment来实现代码高亮的功能，Octopress实现的更好。在Octopress上面有下面几种选择：</p>
+
+<ul>
+<li>使用Solarized高亮主题来实现</li>
+<li>从自己的文件系统中插入代码片段，该代码具有下载链接。</li>
+<li>简单的内嵌代码块带有<code>&lt;div class='bogus-wrapper'&gt;&lt;notextile&gt;&lt;figure&gt;</code>和<code>&lt;figcaption&gt;</code>和可选的下载链接。</li>
+<li>Pygments caching。*</li>
+</ul>
+
+
+<p>这里我们选用 <code>Pygments</code> 实现语法的高亮，来到我们的 <a href="http://pygments.org/">Pygments官网</a> 在左边栏我们可以看到：</p>
+
+<pre><code>pip install Pygments
+</code></pre>
+
+<p>所以，我们需要先安装 <code>pip</code> ，才能继续安装 <code>Pygments</code>，下面详细介绍安装的步骤：</p>
+
+<p><strong>1、安装python</strong></p>
+
+<p>在window下面安装python真是so easy，直接在<a href="https://www.python.org/">官网</a>下载后，全部  <code>next</code> 安装，但是注意python的版本选择非常重要，我今晚就是卡在这里了，本屌以前觉得python非常屌，而且本屌一向是只装最新版不装稳定版，在很久以前装了python 3.x的版本，导致用语法高亮后 <code>rake generate</code> 一直报错，最后把python版本换成2.7后才成功，所以到今天(<em>2014-05-10应该是11号</em>)你必须选择 <strong>python</strong> 的版本为<strong>2.7</strong>，装完之后，记得把python的目录加入到环境变量中，这里也可以预先将 <code>script</code> 目录同时加入到环境变量中，因为之后用pip时需要。</p>
+
+<p><strong>2、安装easy_install</strong></p>
+
+<p>装这个是为了下一步安装pip，先去下载 <a href="http://peak.telecommunity.com/dist/ez_setup.py">ez_setup.py</a> ,然后进行安装</p>
+
+<p><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">py</span> <span class="n">ez_setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p><strong>3、安装pip</strong></p>
+
+<p>先<a href="https://pypi.python.org/packages/source/p/pip/pip-1.4.tar.gz#md5=ca790be30004937987767eac42cfa44a">下载pip</a>，解压后，切换到pip目录，进行安装。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">cd</span> <span class="n">pip</span>
+</span><span class='line'><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span>
+</span><span class='line'><span class="n">easy_install</span> <span class="n">pip</span> <span class="c">#需要将python目录下的script加入到环境变量中</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>4、安装Pygments</strong></p>
+
+<pre><code>pip install Pygments
+gem install pygments.rb #安装pygments.rb，gem 在上一篇中搭建blog的时候已经安装
+</code></pre>
+
+<p><strong>5、修改_config.yml</strong></p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="c1">#pygments: false # default python pygments have been replaced by pygments.rb</span>
+</span><span class='line'><span class="l-Scalar-Plain">pygments</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>以上步骤，语法高亮的配置全部完成，这时你可以进行测试：</p>
+
+<pre><code>```c
+#include&lt;stdio.h&gt;
+int main(void) {
+    printf("Welcome to zhangzy's blog");
+    return 0;
+}
+```
+</code></pre>
+
+<p>显示如下：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="cp">#include&lt;stdio.h&gt;</span>
+</span><span class='line'><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>  <span class="n">printf</span><span class="p">(</span><span class="s">&quot;Welcome to zhangzy&#39;s blog&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[如何在windows上搭建github博客]]></title>
