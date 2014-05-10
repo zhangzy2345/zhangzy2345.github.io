@@ -4,7 +4,7 @@
   <title><![CDATA[zhangzy's Blog]]></title>
   <link href="http://zhangzy2345.github.io/atom.xml" rel="self"/>
   <link href="http://zhangzy2345.github.io/"/>
-  <updated>2014-05-10T19:15:17+08:00</updated>
+  <updated>2014-05-10T19:15:54+08:00</updated>
   <id>http://zhangzy2345.github.io/</id>
   <author>
     <name><![CDATA[zhangzy]]></name>
@@ -32,7 +32,7 @@
 
 <p>在Git中输入：</p>
 
-<pre><code>$ ssh-keygen -t rse ``` -C username@email.com ```
+<pre><code>$ ssh-keygen -t rse -C username@email.com
 </code></pre>
 
 <p><em>Note:上面的email换成你注册github账户时填写的email，全部按默认就行了，不用设置密码了，不然以后提交的时候你会很烦，我之前就设置了，之后果断重新弄了一次</em></p>
