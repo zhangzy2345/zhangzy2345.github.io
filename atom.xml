@@ -4,7 +4,7 @@
   <title><![CDATA[zhangzy's Blog]]></title>
   <link href="http://zhangzy2345.github.io/atom.xml" rel="self"/>
   <link href="http://zhangzy2345.github.io/"/>
-  <updated>2014-05-10T19:15:54+08:00</updated>
+  <updated>2014-05-10T19:18:44+08:00</updated>
   <id>http://zhangzy2345.github.io/</id>
   <author>
     <name><![CDATA[zhangzy]]></name>
@@ -45,7 +45,8 @@
 <pre><code>$ ssh -T git@github.com
 </code></pre>
 
-<p><em>测试是否连接正常。</em></p>
+<p><em>测试是否连接正常。</em>
+&lt;!—more—></p>
 
 <h3>三、安装ruby</h3>
 
