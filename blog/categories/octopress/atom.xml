@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | zhangzy's Blog]]></title>
   <link href="http://zhangzy2345.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://zhangzy2345.github.io/"/>
-  <updated>2014-05-11T00:43:22+08:00</updated>
+  <updated>2014-05-11T00:44:48+08:00</updated>
   <id>http://zhangzy2345.github.io/</id>
   <author>
     <name><![CDATA[zhangzy]]></name>
@@ -31,6 +31,9 @@ Gist code embedding &ndash; by Brandon Tilly.
 Insert code snippets from your filesystem with a download link.
 Easy inline code blocks with &lt;figureand &lt;figcaptionand optional download links.
 Pygments caching &ndash; a Jekyll community plugin.</p></blockquote>
+
+<!--more-->
+
 
 <p>*
 译文：</p>
