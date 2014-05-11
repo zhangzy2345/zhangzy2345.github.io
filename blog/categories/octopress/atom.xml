@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | zhangzy's Blog]]></title>
   <link href="http://zhangzy2345.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://zhangzy2345.github.io/"/>
-  <updated>2014-05-11T14:07:12+08:00</updated>
+  <updated>2014-05-11T14:08:11+08:00</updated>
   <id>http://zhangzy2345.github.io/</id>
   <author>
     <name><![CDATA[zhangzy]]></name>
@@ -91,20 +91,20 @@ pygments: true
 
 <p>以上步骤，语法高亮的配置全部完成，这时你可以进行测试：</p>
 
-<pre><code>```c
+<pre><code>```c c's code
 #include&lt;stdio.h&gt;
 int main(void) {
     printf("Welcome to zhangzy's blog");
     return 0;
 }
 ```
-{ % codeblock [title] [lang:java] %}
+``` java java's code
 public class Test {
     public static void main(String[] args) {
         System.out.print("Welcome to zhangzy's blog");  
     }
 }
-{ % endcodeblock %}
+```
 </code></pre>
 
 <p>显示如下：</p>
