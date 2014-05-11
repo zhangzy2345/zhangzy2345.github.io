@@ -4,7 +4,7 @@
   <title><![CDATA[Category: android | zhangzy's Blog]]></title>
   <link href="http://zhangzy2345.github.io/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://zhangzy2345.github.io/"/>
-  <updated>2014-05-11T17:38:13+08:00</updated>
+  <updated>2014-05-11T17:39:06+08:00</updated>
   <id>http://zhangzy2345.github.io/</id>
   <author>
     <name><![CDATA[zhangzy]]></name>
@@ -22,6 +22,9 @@
 
 <p>先来到<a href="http://developer.android.com/reference/android/app/Activity.html">官网</a>查看API(<em>靠着吃饭的东西,一定要有查api的习惯</em>)，拖到下面，我们可以看到一张图：
 <img src="http://developer.android.com/images/activity_lifecycle.png" alt="" /></p>
+
+<!--more-->
+
 
 <p>这张图很清晰的activity的执行过程，如果还是没怎么理解，下面写个例子与其分析，详细的介绍执行过程中activity调用了哪些方法。</p>
 
