@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: android | zhangzy's Blog]]></title>
+  <link href="http://zhangzy2345.github.io/blog/categories/android/atom.xml" rel="self"/>
+  <link href="http://zhangzy2345.github.io/"/>
+  <updated>2014-05-11T17:38:13+08:00</updated>
+  <id>http://zhangzy2345.github.io/</id>
+  <author>
+    <name><![CDATA[zhangzy]]></name>
+    <email><![CDATA[zhangzy0816@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[安卓开发中activity的生命周期(1)]]></title>
+    <link href="http://zhangzy2345.github.io/blog/android-activity-lifetime-1"/>
+    <updated>2014-05-11T16:20:58+08:00</updated>
+    <id>http://zhangzy2345.github.io/blog/android-activity-lifetime-1</id>
+    <content type="html"><![CDATA[<p>学习 android 几天时间了，发现android中，页面切换实际上是不同的activity进行切换，下面来简单记录一下activity的生命周期。</p>
+
+<p>先来到<a href="http://developer.android.com/reference/android/app/Activity.html">官网</a>查看API(<em>靠着吃饭的东西,一定要有查api的习惯</em>)，拖到下面，我们可以看到一张图：
+<img src="http://developer.android.com/images/activity_lifecycle.png" alt="" /></p>
+
+<p>这张图很清晰的activity的执行过程，如果还是没怎么理解，下面写个例子与其分析，详细的介绍执行过程中activity调用了哪些方法。</p>
+
+<p>``` java FirstActivity
+public class FirstActivity extends Activity{</p>
+
+<pre><code>@Override
+protected void onCreate(Bundle savedInstanceState) {
+    // TODO Auto-generated method stub
+    super.onCreate(savedInstanceState);
+    System.out.println("firstActivity call oncreate");
+    Button bt = (Button) findViewById(R.id.bt);
+    bt.setOnclickListener(new btOnClickListener());
+
+    class btOnClick implements OnClickListener {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            // TODO Auto-generated method stub
+            Intent i = new Intent();
+            i.setClass(FirstActivity.this, SecondActivity.class);
+            startActivity(i);
+        }
+    } 
+}
+
+@Override
+protected void onStart() {
+    // TODO Auto-generated method stub
+    super.onStart();
+    System.out.println("firstActivity call onstart");
+}
+
+@Override
+protected void onRestart() {
+    // TODO Auto-generated method stub
+    super.onRestart();
+    System.out.println("firstActivity call onrestart");
+}
+
+@Override
+protected void onResume() {
+    // TODO Auto-generated method stub
+    super.onResume();
+    System.out.println("firstActivity call onresume");
+}
+
+@Override
+protected void onPause() {
+    // TODO Auto-generated method stub
+    super.onPause();
+    System.out.println("firstActivity call onpause");
+}
+
+@Override
+protected void onStop() {
+    // TODO Auto-generated method stub
+    super.onStop();
+    System.out.println("firstActivity call onstop");
+}
+
+@Override
+protected void onDestroy() {
+    // TODO Auto-generated method stub
+    super.onDestroy();
+    System.out.println("firstActivity call ondestory");
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>``` java SecondActivity
+public class SecondActivity extends Activity{</p>
+
+<pre><code>@Override
+protected void onCreate(Bundle savedInstanceState) {
+    // TODO Auto-generated method stub
+    super.onCreate(savedInstanceState);
+    System.out.println("secondActivity call oncreate");
+    Button bt = (Button) findViewById(R.id.bt);
+    bt.setOnclickListener(new btOnClickListener());
+
+    class btOnClick implements OnClickListener {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            // TODO Auto-generated method stub
+            Intent i = new Intent();
+            i.setClass(SecondActivity.this, FirstActivity.class);
+            startActivity(i);
+            **SecondActivity.this.finish();**
+        }
+    } 
+}
+
+@Override
+protected void onStart() {
+    // TODO Auto-generated method stub
+    super.onStart();
+    System.out.println("secondActivity call onstart");
+}
+
+@Override
+protected void onRestart() {
+    // TODO Auto-generated method stub
+    super.onRestart();
+    System.out.println("secondActivity call onrestart");
+}
+
+@Override
+protected void onResume() {
+    // TODO Auto-generated method stub
+    super.onResume();
+    System.out.println("secondActivity call onresume");
+}
+
+@Override
+protected void onPause() {
+    // TODO Auto-generated method stub
+    super.onPause();
+    System.out.println("secondActivity call onpause");
+}
+
+@Override
+protected void onStop() {
+    // TODO Auto-generated method stub
+    super.onStop();
+    System.out.println("secondActivity call onstop");
+}
+
+@Override
+protected void onDestroy() {
+    // TODO Auto-generated method stub
+    super.onDestroy();
+    System.out.println("secondActivity call ondestory");
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>上面代码非常简单，<code>FirshActivity</code> 与 <code>SecondActivity</code> 都复写了 Activity 的一些基本方法，然后每个activity中都有个按钮(<em>布局页面就不提供了</em>)，点击按钮后，在两个activity之间进行切换，先将启动程序设为 <code>FirshActivity</code>，然后运行，会看到以下输出：</p>
+
+<p><code>
+firstActivity call oncreate
+firstActivity call onstart
+firstActivity call onresume
+</code></p>
+
+<p>接着点击按钮：</p>
+
+<p><code>
+firstActivity call onpause
+secondActivity call oncreate
+secondActivity call onstart
+secondActivity call onresume
+firstActivity call onstop
+</code></p>
+
+<p>在接着在点击按钮返回FirstActivity：</p>
+
+<p><code>
+secondActivity call onpause
+firstActivity call **onrestart**
+firstActivity call onstart
+firstActivity call onresume
+secondActivity call onstop
+**secondActivity call ondestory**
+</code>
+通过运行可以很清晰的知道，当一个activity运行的时候，会依次执行 <code>onCreate</code> &ndash;> <code>onStart</code> &ndash;> <code>onresume</code></p>
+
+<blockquote><p><code>onCreate</code> 是当程序运行的时候开始调用，一般用于加载布局，监听事件等 <br/>
+<code>onStart</code> 当你能看到界面的时候调用  <br/>
+<code>onresume</code> 当获得焦点后调用，即你能操作这个activity的一些控件的时候</p></blockquote>
+
+<p>当我们点击按钮，跳转到另外一个activity的时候，依次执行了 <code>onPause</code> &ndash;> <code>onCreate</code> &ndash;> <code>onStart</code> &ndash;> <code>onResume</code> &ndash;> <code>onStop</code></p>
+
+<blockquote><p><code>onPause</code> 注意，这里是第一个activity调用的，当调用另外一个activity时被调用，比如你在使用过程中，突然来了一个电话，这时候会调用电话这个activity，onpause 就被调用了，一般用于保存数据 <br/>
+<code>onCreate</code> 由上面可知 <br/>
+<code>onStart</code> 由上面可知 <br/>
+<code>onResume</code> 由上面可知 <br/>
+<code>onStop</code> 当一个activity被另一个activity完全遮住时，调用stop，注意是<strong>完全</strong>，如果是一个对话框，覆盖在了这个activity上面，不会被调用</p></blockquote>
+
+<p>当从另外一个activity返回回来时，调用了 <code>onPause</code> &ndash;> <code>onRestart</code> &ndash;> <code>onStart</code> &ndash;> <code>onResume</code> &ndash;> <code>onStop</code> &ndash;> <code>onDestory</code></p>
+
+<blockquote><p><code>onPause</code> 因为切换到了FirstActivity，所以当前的被暂停
+<code>onRestart</code> 注意，回到第一个activity后，并不是重新 <code>onCreate</code>，而是 <code>onRestart</code>，因为第一个activity并没有被销毁
+<code>onStart</code> 由上面可知
+<code>onResume</code> 由上面可知
+<code>onStop</code> 因为此时第一个activity完全遮挡住了第二个activity
+<code>onDestory</code> 注意，该方法在第一个activity中没有被调用而在这里调用了，请仔细上上面代码的加粗部分，只有在你程序中调用了 <code>finish()</code> 方法，或资源不够用时才会被销毁，销毁之后再调用这个activity，必须重新创建。</p></blockquote>
+]]></content>
+  </entry>
+  
+</feed>
