@@ -4,7 +4,7 @@
   <title><![CDATA[zhangzy's Blog]]></title>
   <link href="http://zhangzy2345.github.io/atom.xml" rel="self"/>
   <link href="http://zhangzy2345.github.io/"/>
-  <updated>2014-05-11T14:04:30+08:00</updated>
+  <updated>2014-05-11T14:05:27+08:00</updated>
   <id>http://zhangzy2345.github.io/</id>
   <author>
     <name><![CDATA[zhangzy]]></name>
@@ -125,7 +125,7 @@ public class Test {
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>{ % codeblock lang:java java&rsquo;s code %}
+<p>{ % codeblock %}
 public class Test {
 public static void main(String[] args) {
 System.out.print(&ldquo;Welcome to zhangzy&rsquo;s blog&rdquo;);<br/>
