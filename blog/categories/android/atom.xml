@@ -4,7 +4,7 @@
   <title><![CDATA[Category: android | zhangzy's Blog]]></title>
   <link href="http://zhangzy2345.github.io/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://zhangzy2345.github.io/"/>
-  <updated>2014-05-11T19:30:32+08:00</updated>
+  <updated>2014-05-11T20:25:38+08:00</updated>
   <id>http://zhangzy2345.github.io/</id>
   <author>
     <name><![CDATA[zhangzy]]></name>
@@ -12,6 +12,132 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[安卓开发中activity的生命周期(2)]]></title>
+    <link href="http://zhangzy2345.github.io/blog/android-activity-lifetime-2"/>
+    <updated>2014-05-11T19:51:25+08:00</updated>
+    <id>http://zhangzy2345.github.io/blog/android-activity-lifetime-2</id>
+    <content type="html"><![CDATA[<p>本篇是对<a href="http://zhangzy2345.github.io/blog/android-activity-lifetime-1/">《安卓开发中activity的生命周期(1)》</a>做一些补充，主要介绍 <code>Activity</code> 与 <code>task</code> 的关系。</p>
+
+<h3>一、A Task is a stack of activitise</h3>
+
+<p>简单的可以理解为当一个Activity运行后会压入栈中，每次展示给用户的都是在栈顶的 Activity，之前运行的 Activity 都被压在了底下，假设有3个 Activity：</p>
+
+<p>``` java One.java
+public class One extends Activity {</p>
+
+<pre><code>@Override
+protected void onCreate(Bundle savedInstanceState) {
+    // TODO Auto-generated method stub
+    super.onCreate(savedInstanceState);
+    ......
+    Intent i = new Intent();
+    i.setClass(One.this, Two.class);
+    startActivity(i);
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>``` java Two.java
+public class One extends Activity {</p>
+
+<pre><code>@Override
+protected void onCreate(Bundle savedInstanceState) {
+    // TODO Auto-generated method stub
+    super.onCreate(savedInstanceState);
+    ......
+    Intent i = new Intent();
+    i.setClass(Two.this, Three.class);
+    startActivity(i);
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>``` java Three.java
+public class Three extends Activity {</p>
+
+<pre><code>@Override
+protected void onCreate(Bundle savedInstanceState) {
+    // TODO Auto-generated method stub
+    super.onCreate(savedInstanceState);
+    ......
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<blockquote><p>大家可能会发现代码有问题，上面代码主要只是体现不同Activity之间切换，不要纠结代码无法执行，相信大家写一个简单的切换应该没问题，如果写不出来，请移步至谷歌/百度</p></blockquote>
+
+<p>不难看出，上面的3个Activity，<code>One</code> 切换到 <code>Two</code>，<code>Two</code> 切换到 <code>Three</code></p>
+
+<ul>
+<li>当执行One后，会将 One 压入到 Task 中，此时 Task 中 <code>[One]</code></li>
+<li>当切换到Two后，会将Two 压入到Task中，此时 Task 中 <code>[Two, One]</code> <em>注意顺序，Two在前面</em></li>
+<li>当切换到Three后，会将Three 压入到Task中，此时Task中 <code>[Three, Two, One]</code></li>
+</ul>
+
+
+<p>此时Task中有3个Activity，当用户按系统的 <code>回退</code> 键时，会先执行 <code>弹栈</code><em>(出栈)</em>操作：</p>
+
+<ul>
+<li>第一次按回退后，栈中的元素变成 <code>[Two, One]</code>，此时展示的是栈顶的Activity，即Two</li>
+<li>第一次按回退后，栈中的元素变成了 <code>[One]</code>，此时展示的是栈顶的Activity，即One</li>
+</ul>
+
+
+<p>所以，我们可以发现，切换到其他Activity时，之前的Activity并没有被销毁，而是压入到了Task中，问题又来了，那么我们该怎么去销毁Activity呢？</p>
+
+<h3>二、销毁Activity</h3>
+
+<p>如何销毁一个Activity，其实我们在上一篇 <a href="http://zhangzy2345.github.io/blog/android-activity-lifetime-1/">安卓开发中activity的生命周期(1)</a>有介绍过，即我们在Activity中加入：</p>
+
+<pre><code>finish()
+</code></pre>
+
+<p>就能销毁当前Activity，当Activity被销毁后，在Task中又是如何操作的呢？</p>
+
+<p>首先，我们稍微改一下上面的代码Two.java</p>
+
+<p>``` java Two.java
+public class One extends Activity {</p>
+
+<pre><code>@Override
+protected void onCreate(Bundle savedInstanceState) {
+    // TODO Auto-generated method stub
+    super.onCreate(savedInstanceState);
+    ......
+    Intent i = new Intent();
+    i.setClass(Two.this, Three.class);
+    startActivity(i);
+    finish();   //注意这里
+}
+</code></pre>
+
+<p>}
+```
+接着，我们重复上面的操作：</p>
+
+<ul>
+<li>当执行One后，会将 One 压入到 Task 中，此时 Task 中 <code>[One]</code></li>
+<li>当切换到Two后，会将Two 压入到Task中，此时 Task 中 <code>[Two, One]</code> <em>注意顺序，Two在前面</em></li>
+<li>当切换到Three后，会将Three 压入到Task中，<strong>注意，由于我们finish()了，Two这个Activity被销毁了，将不会压入Task中</strong>，此时的Task <code>[Three, One]</code></li>
+</ul>
+
+
+<p>最后，我们在按<code>回退</code>按钮试试：</p>
+
+<ul>
+<li>第一次按回退后，注意，由于栈中只有<code>[Three, One]</code>,当弹出一个后，栈中变成了<code>[One]</code>，所以你会发现并没有返回Two，而是直接返回到One。</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[安卓开发中activity的生命周期(1)]]></title>
