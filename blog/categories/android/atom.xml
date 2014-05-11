@@ -4,7 +4,7 @@
   <title><![CDATA[Category: android | zhangzy's Blog]]></title>
   <link href="http://zhangzy2345.github.io/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://zhangzy2345.github.io/"/>
-  <updated>2014-05-11T17:39:06+08:00</updated>
+  <updated>2014-05-11T17:41:13+08:00</updated>
   <id>http://zhangzy2345.github.io/</id>
   <author>
     <name><![CDATA[zhangzy]]></name>
@@ -209,10 +209,10 @@ secondActivity call onstop
 
 <p>当从另外一个activity返回回来时，调用了 <code>onPause</code> &ndash;> <code>onRestart</code> &ndash;> <code>onStart</code> &ndash;> <code>onResume</code> &ndash;> <code>onStop</code> &ndash;> <code>onDestory</code></p>
 
-<blockquote><p><code>onPause</code> 因为切换到了FirstActivity，所以当前的被暂停
-<code>onRestart</code> 注意，回到第一个activity后，并不是重新 <code>onCreate</code>，而是 <code>onRestart</code>，因为第一个activity并没有被销毁
-<code>onStart</code> 由上面可知
-<code>onResume</code> 由上面可知
+<blockquote><p><code>onPause</code> 因为切换到了FirstActivity，所以当前的被暂停<br/>
+ <code>onRestart</code> 注意，回到第一个activity后，并不是重新 <code>onCreate</code>，而是 <code>onRestart</code>，因为第一个activity并没有被销毁<br/>
+ <code>onStart</code> 由上面可知<br/>
+<code>onResume</code> 由上面可知<br/>
 <code>onStop</code> 因为此时第一个activity完全遮挡住了第二个activity
 <code>onDestory</code> 注意，该方法在第一个activity中没有被调用而在这里调用了，请仔细上上面代码的加粗部分，只有在你程序中调用了 <code>finish()</code> 方法，或资源不够用时才会被销毁，销毁之后再调用这个activity，必须重新创建。</p></blockquote>
 ]]></content>
