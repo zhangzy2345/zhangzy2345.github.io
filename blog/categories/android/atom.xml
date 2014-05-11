@@ -4,7 +4,7 @@
   <title><![CDATA[Category: android | zhangzy's Blog]]></title>
   <link href="http://zhangzy2345.github.io/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://zhangzy2345.github.io/"/>
-  <updated>2014-05-11T17:41:13+08:00</updated>
+  <updated>2014-05-11T18:27:38+08:00</updated>
   <id>http://zhangzy2345.github.io/</id>
   <author>
     <name><![CDATA[zhangzy]]></name>
@@ -39,7 +39,7 @@ protected void onCreate(Bundle savedInstanceState) {
     Button bt = (Button) findViewById(R.id.bt);
     bt.setOnclickListener(new btOnClickListener());
 
-    class btOnClick implements OnClickListener {
+    class btOnClickListener implements OnClickListener {
         @Override
         public void onClick(DialogInterface dialog, int which) {
             // TODO Auto-generated method stub
@@ -107,7 +107,7 @@ protected void onCreate(Bundle savedInstanceState) {
     Button bt = (Button) findViewById(R.id.bt);
     bt.setOnclickListener(new btOnClickListener());
 
-    class btOnClick implements OnClickListener {
+    class btOnClickListener implements OnClickListener {
         @Override
         public void onClick(DialogInterface dialog, int which) {
             // TODO Auto-generated method stub
@@ -213,7 +213,7 @@ secondActivity call onstop
  <code>onRestart</code> 注意，回到第一个activity后，并不是重新 <code>onCreate</code>，而是 <code>onRestart</code>，因为第一个activity并没有被销毁<br/>
  <code>onStart</code> 由上面可知<br/>
 <code>onResume</code> 由上面可知<br/>
-<code>onStop</code> 因为此时第一个activity完全遮挡住了第二个activity
+<code>onStop</code> 因为此时第一个activity完全遮挡住了第二个activity<br/>
 <code>onDestory</code> 注意，该方法在第一个activity中没有被调用而在这里调用了，请仔细上上面代码的加粗部分，只有在你程序中调用了 <code>finish()</code> 方法，或资源不够用时才会被销毁，销毁之后再调用这个activity，必须重新创建。</p></blockquote>
 ]]></content>
   </entry>

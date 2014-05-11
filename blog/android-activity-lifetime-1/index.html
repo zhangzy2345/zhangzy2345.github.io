@@ -165,7 +165,7 @@
 </span><span class='line'>      <span class="n">Button</span> <span class="n">bt</span> <span class="o">=</span> <span class="o">(</span><span class="n">Button</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">bt</span><span class="o">);</span>
 </span><span class='line'>      <span class="n">bt</span><span class="o">.</span><span class="na">setOnclickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">btOnClickListener</span><span class="o">());</span>
 </span><span class='line'>      
-</span><span class='line'>      <span class="kd">class</span> <span class="nc">btOnClick</span> <span class="kd">implements</span> <span class="n">OnClickListener</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kd">class</span> <span class="nc">btOnClickListener</span> <span class="kd">implements</span> <span class="n">OnClickListener</span> <span class="o">{</span>
 </span><span class='line'>          <span class="nd">@Override</span>
 </span><span class='line'>          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">DialogInterface</span> <span class="n">dialog</span><span class="o">,</span> <span class="kt">int</span> <span class="n">which</span><span class="o">)</span> <span class="o">{</span>
 </span><span class='line'>              <span class="c1">// TODO Auto-generated method stub</span>
@@ -297,7 +297,7 @@
 </span><span class='line'>      <span class="n">Button</span> <span class="n">bt</span> <span class="o">=</span> <span class="o">(</span><span class="n">Button</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">bt</span><span class="o">);</span>
 </span><span class='line'>      <span class="n">bt</span><span class="o">.</span><span class="na">setOnclickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">btOnClickListener</span><span class="o">());</span>
 </span><span class='line'>      
-</span><span class='line'>      <span class="kd">class</span> <span class="nc">btOnClick</span> <span class="kd">implements</span> <span class="n">OnClickListener</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kd">class</span> <span class="nc">btOnClickListener</span> <span class="kd">implements</span> <span class="n">OnClickListener</span> <span class="o">{</span>
 </span><span class='line'>          <span class="nd">@Override</span>
 </span><span class='line'>          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">DialogInterface</span> <span class="n">dialog</span><span class="o">,</span> <span class="kt">int</span> <span class="n">which</span><span class="o">)</span> <span class="o">{</span>
 </span><span class='line'>              <span class="c1">// TODO Auto-generated method stub</span>
@@ -417,7 +417,7 @@
  <code>onRestart</code> 注意，回到第一个activity后，并不是重新 <code>onCreate</code>，而是 <code>onRestart</code>，因为第一个activity并没有被销毁<br/>
  <code>onStart</code> 由上面可知<br/>
 <code>onResume</code> 由上面可知<br/>
-<code>onStop</code> 因为此时第一个activity完全遮挡住了第二个activity
+<code>onStop</code> 因为此时第一个activity完全遮挡住了第二个activity<br/>
 <code>onDestory</code> 注意，该方法在第一个activity中没有被调用而在这里调用了，请仔细上上面代码的加粗部分，只有在你程序中调用了 <code>finish()</code> 方法，或资源不够用时才会被销毁，销毁之后再调用这个activity，必须重新创建。</p></blockquote>
 </div>
 
