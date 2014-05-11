@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | zhangzy's Blog]]></title>
   <link href="http://zhangzy2345.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://zhangzy2345.github.io/"/>
-  <updated>2014-05-11T14:03:03+08:00</updated>
+  <updated>2014-05-11T14:04:30+08:00</updated>
   <id>http://zhangzy2345.github.io/</id>
   <author>
     <name><![CDATA[zhangzy]]></name>
@@ -121,15 +121,12 @@ return 0;
 
 <p>}
 ```
-{ % codeblock lang:java %}
-public class Test {</p>
-
-<pre><code>public static void main(String[] args) {
-    System.out.print("Welcome to zhangzy's blog");  
+{ % codeblock lang:java java&rsquo;s code %}
+public class Test {
+public static void main(String[] args) {
+System.out.print(&ldquo;Welcome to zhangzy&rsquo;s blog&rdquo;);<br/>
 }
-</code></pre>
-
-<p>}
+}
 { % endcodeblock %}</p>
 ]]></content>
   </entry>
