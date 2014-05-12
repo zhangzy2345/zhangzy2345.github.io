@@ -4,7 +4,7 @@
   <title><![CDATA[zhangzy's Blog]]></title>
   <link href="http://zhangzy2345.github.io/atom.xml" rel="self"/>
   <link href="http://zhangzy2345.github.io/"/>
-  <updated>2014-05-11T20:27:11+08:00</updated>
+  <updated>2014-05-12T14:36:23+08:00</updated>
   <id>http://zhangzy2345.github.io/</id>
   <author>
     <name><![CDATA[zhangzy]]></name>
@@ -253,6 +253,8 @@
 <span class='line-number'>61</span>
 <span class='line-number'>62</span>
 <span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
 </pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FirstActivity</span> <span class="kd">extends</span> <span class="n">Activity</span><span class="o">{</span>
 </span><span class='line'>
 </span><span class='line'>  <span class="nd">@Override</span>
@@ -263,7 +265,10 @@
 </span><span class='line'>      <span class="n">Button</span> <span class="n">bt</span> <span class="o">=</span> <span class="o">(</span><span class="n">Button</span><span class="o">)</span> <span class="n">findViewById</span><span class="o">(</span><span class="n">R</span><span class="o">.</span><span class="na">id</span><span class="o">.</span><span class="na">bt</span><span class="o">);</span>
 </span><span class='line'>      <span class="n">bt</span><span class="o">.</span><span class="na">setOnclickListener</span><span class="o">(</span><span class="k">new</span> <span class="n">btOnClickListener</span><span class="o">());</span>
 </span><span class='line'>      
-</span><span class='line'>      <span class="kd">class</span> <span class="nc">btOnClickListener</span> <span class="kd">implements</span> <span class="n">OnClickListener</span> <span class="o">{</span>
+</span><span class='line'>      
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="kd">class</span> <span class="nc">btOnClickListener</span> <span class="kd">implements</span> <span class="n">OnClickListener</span> <span class="o">{</span>
 </span><span class='line'>          <span class="nd">@Override</span>
 </span><span class='line'>          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">onClick</span><span class="o">(</span><span class="n">DialogInterface</span> <span class="n">dialog</span><span class="o">,</span> <span class="kt">int</span> <span class="n">which</span><span class="o">)</span> <span class="o">{</span>
 </span><span class='line'>              <span class="c1">// TODO Auto-generated method stub</span>
@@ -272,8 +277,7 @@
 </span><span class='line'>              <span class="n">startActivity</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
 </span><span class='line'>          <span class="o">}</span>
 </span><span class='line'>      <span class="o">}</span>
-</span><span class='line'>  <span class="o">}</span>
-</span><span class='line'>  
+</span><span class='line'>
 </span><span class='line'>  <span class="nd">@Override</span>
 </span><span class='line'>  <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onStart</span><span class="o">()</span> <span class="o">{</span>
 </span><span class='line'>      <span class="c1">// TODO Auto-generated method stub</span>
